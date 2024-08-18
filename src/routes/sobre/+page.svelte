@@ -9,24 +9,15 @@
       <p>
           Autor 1: Emerson josé de Santana Silva
       </p>
-      <p>
-        <a href=""></a>
-      </p>
     </div>
     <div class="autor">
       <p>
         Autor 2: Paulo Ricardo Barbosa Francisco
       </p>
-      <p>
-        <a href=""></a>
-      </p>
     </div>
     <div class="autor">
       <p>
         Autor 3: Thomaz Rodrigues dos Santos
-      </p>
-      <p>
-        <a href=""></a>
       </p>
     </div>
       <a class="btn" href="/">Voltar ao Menu</a>
