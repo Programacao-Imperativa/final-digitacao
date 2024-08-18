@@ -1,4 +1,6 @@
 <script lang="ts">
+    import NavBottom from "../components/NavBottom.svelte";
+
     let tituloDoJogo : string = "Jogo da Digitação"
 </script>
 
@@ -19,53 +21,53 @@
     </div>
 </div>
 
+<NavBottom />
 
 <style scoped>
 
-header {
-    padding: 1rem;
-}
+    header {
+        padding: 1rem;
+    }
 
-h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    color: rgb(235, 235, 235);
-}
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        color: rgb(235, 235, 235);
+    }
 
-.cards {
-    margin-top: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .cards {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-.card {
-    width: 30rem;
-    display: flex;
-    background-color: #6b6868;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
-    text-align: center;
-    align-items: center;
-}
+    .card {
+        width: 30rem;
+        display: flex;
+        background-color: #6b6868;
+        border-radius: 5px;
+        padding: 1rem;
+        margin: 1rem;
+        text-align: center;
+        align-items: center;
+    }
 
-.card img {
-    width: 10rem;
-    margin-left: 0;
-}
+    .card img {
+        width: 10rem;
+        margin-left: 0;
+    }
 
-.card a {
-    margin-left: 5rem;
-}
+    .card a {
+        margin-left: 5rem;
+    }
 
-.link {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
+    .link {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
 </style>

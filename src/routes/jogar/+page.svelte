@@ -1,57 +1,44 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { frases } from './text';
+import { frases } from './text';
+import NavBottom from '../../components/NavBottom.svelte';
 
-	let indice: number = 0;
-	let ifrase: number = 0;
-    let textFull = '';
-	let frase = frases[ifrase];
 
-	function nextText(): void { 
+let indice: number = 0;
+let ifrase: number = 0;
+let textFull = '';
+let frase = frases[ifrase];
+let caracteres: string[] = frase.text.split('');
+let currentIndex: number = 0;
+let pressedKey: string = '';
 
-		if (indice >= frases.length - 1) {
-			indice = 0;
-		} else {
-			indice++;
-			ifrase++;
-			textFull = '';
-		}
-		frase = frases[indice];
-
+function nextText(): void { 
+	if (ifrase >= frases.length - 1) {
+		ifrase = 0;
+	} else {
+		ifrase++;
 	}
+	indice = 0;
+	textFull = '';
+	frase = frases[ifrase];
+	caracteres = frase.text.split('');
+	currentIndex = 0;
+}
 
-	const caracteres: string[] = frase.text.split('');
-
-	let currentIndex: number = 0;
-
-	let pressedKey: string = '';
-
-	function handleKeydown(event: KeyboardEvent): void {
-		pressedKey = event.key;
-		console.log(caracteres[currentIndex]);
-		if (caracteres[currentIndex] ===  pressedKey) {
-			console.log('Correto: ' + caracteres[currentIndex]);
-            console.log('teste:'+textFull);
-
-			textFull = textFull + caracteres[currentIndex];
-			currentIndex++;
-			if (currentIndex >= caracteres.length) {
-				currentIndex = 0;
-				console.log('Frase completa');
-			}
-		} else {
-			console.log('Errado: ' + pressedKey);
+function handleKeydown(event: KeyboardEvent): void {
+	pressedKey = event.key;
+	if (caracteres[currentIndex] === pressedKey) {
+		textFull += caracteres[currentIndex];
+		currentIndex++;
+		if (currentIndex >= caracteres.length) {
+			console.log('Frase completa');
 		}
+	} else {
+		console.log('Errado: ' + pressedKey);
 	}
-
-	onMount(() => {
-		window.addEventListener('keydown', handleKeydown);
-	});
-
-	onDestroy(() => {
-		window.removeEventListener('keydown', handleKeydown);
-	});
+}
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="title">
 	<h1>Jogo da Digitação</h1>
@@ -59,14 +46,17 @@
 
 <div class="text">
 	<p class="text">{frase.text}</p>
-	<p class="entrada">{textFull}</p>
+	<p class="input">{textFull}</p>
 </div>
 
 <div class="next">
 	<button class="btn" on:click={nextText}>Próxima</button>
 </div>
 
+<NavBottom />
+
 <style scoped>
+
 	* {
 		overflow: hidden;
 	}
@@ -82,24 +72,23 @@
 
 	.text {
 		position: absolute;
-		width: 5rem;
+		width: 90%;
 		height: 80vh;
-		width: 100%;
 		top: 23%;
 		text-align: left;
 		font-size: 2rem;
 		color: #928e8e;
-		margin-left: 5rem;
+		margin-left: 4rem;
 	}
 
-	.entrada {
+	.input {
 		position: absolute;
 		height: 80vh;
-		width: 100%;
+		width: 90%;
 		top: 23%;
 		text-align: left;
 		font-size: 2rem;
-		margin-left: 5rem;
+		margin-left: 4rem;
 		color: #fff;
 	}
 
